@@ -1,0 +1,110 @@
+# verifications/linux/firewall.yaml
+id: linux-firewall
+meta:
+  version: "1.0"
+  author: "Security Team"
+  last_updated: "2024-01-15"
+  references:
+    - "ANSSI Linux Configuration Guide"
+    - "CIS Linux Benchmark"
+
+title:
+  en: "Firewall Status"
+  fr: "État du pare-feu"
+  de: "Firewall-Status"
+  es: "Estado del Firewall"
+
+description:
+  en: |
+    Checks that a firewall is installed, enabled and properly configured.
+    Different distributions use different firewall solutions (ufw, firewalld, iptables).
+  fr: |
+    Vérifie qu'un pare-feu est installé, activé et correctement configuré.
+    Les différentes distributions utilisent différentes solutions (ufw, firewalld, iptables).
+
+severity: critical
+category: firewall
+level: basic
+
+check:
+  linux:
+    debian:
+      command: "ufw status | grep -q 'Status: active' && echo 'active' || echo 'inactive'"
+      expected: "active"
+    ubuntu:
+      command: "ufw status | grep -q 'Status: active' && echo 'active' || echo 'inactive'"
+      expected: "active"
+    rhel:
+      command: "systemctl is-active firewalld"
+      expected: "active"
+    centos:
+      command: "systemctl is-active firewalld"
+      expected: "active"
+    fedora:
+      command: "systemctl is-active firewalld"
+      expected: "active"
+    suse:
+      command: "systemctl is-active firewalld || SuSEfirewall2 status"
+      expected: "active"
+    arch:
+      command: "systemctl is-active iptables || systemctl is-active nftables"
+      expected: "active"
+    universal:
+      commands:
+        - "command -v ufw >/dev/null && ufw status | grep -q 'Status: active' && echo 'active'"
+        - "command -v firewall-cmd >/dev/null && systemctl is-active firewalld"
+        - "iptables -L -n | grep -q 'Chain' && echo 'active'"
+      expected: "active"
+
+remediation:
+  linux:
+    debian:
+      command: |
+        apt-get update && apt-get install -y ufw
+        ufw --force enable
+        ufw default deny incoming
+        ufw default allow outgoing
+        ufw allow ssh
+      description:
+        en: "Install and enable UFW with basic rules"
+        fr: "Installer et activer UFW avec des règles de base"
+    
+    rhel:
+      command: |
+        yum install -y firewalld
+        systemctl enable --now firewalld
+        firewall-cmd --set-default-zone=public
+        firewall-cmd --add-service=ssh --permanent
+        firewall-cmd --reload
+      description:
+        en: "Install and enable firewalld with basic configuration"
+        fr: "Installer et activer firewalld avec une configuration de base"
+    
+    universal:
+      command: |
+        if command -v apt-get >/dev/null; then
+            apt-get update && apt-get install -y ufw
+            ufw --force enable
+        elif command -v yum >/dev/null; then
+            yum install -y firewalld
+            systemctl enable --now firewalld
+        elif command -v zypper >/dev/null; then
+            zypper install -y firewalld
+            systemctl enable --now firewalld
+        fi
+      description:
+        en: "Install and enable appropriate firewall for your distribution"
+        fr: "Installer et activer le pare-feu approprié pour votre distribution"
+
+additional_info:
+  testing:
+    en: |
+      After enabling the firewall:
+      1. Test SSH connection before closing current session
+      2. Verify required services are accessible
+      3. Check firewall logs for blocked connections
+    fr: |
+      Après activation du pare-feu :
+      1. Testez la connexion SSH avant de fermer la session
+      2. Vérifiez que les services requis sont accessibles
+      3. Consultez les logs pour les connexions bloquées

@@ -1,0 +1,359 @@
+{
+  "locale": "en",
+  "name": "English",
+  "flag": "🇬🇧",
+  "direction": "ltr",
+  
+  "interface": {
+    "title": "Security Hardening Console",
+    "subtitle": "Analyze and strengthen the security of your Windows and Linux servers",
+    "version": "v1.0.0",
+    "footer": "Based on ANSSI, CIS and Microsoft recommendations",
+    
+    "buttons": {
+      "analyze": "Analyze",
+      "apply": "Apply",
+      "export": "Export PDF",
+      "selectAll": "Select all",
+      "deselectAll": "Deselect all",
+      "showDetails": "Show details",
+      "close": "Close",
+      "download": "Download",
+      "copy": "Copy",
+      "refresh": "Refresh",
+      "newAnalysis": "New analysis",
+      "generateScript": "Generate script",
+      "showFix": "Show fix",
+      "test": "Test",
+      "save": "Save",
+      "cancel": "Cancel",
+      "back": "Back",
+      "next": "Next",
+      "finish": "Finish"
+    },
+    
+    "sections": {
+      "systemInfo": "System Information",
+      "summary": "Summary",
+      "detailedResults": "Detailed Results",
+      "availableActions": "Available Actions",
+      "filters": "Filters",
+      "progress": "Progress",
+      "remediation": "Remediation",
+      "configuration": "Configuration",
+      "language": "Language",
+      "about": "About"
+    },
+    
+    "labels": {
+      "hostname": "Hostname",
+      "operatingSystem": "Operating System",
+      "distribution": "Distribution",
+      "kernel": "Kernel",
+      "version": "Version",
+      "lastBoot": "Last boot",
+      "uptime": "Uptime",
+      "user": "User",
+      "analysisDate": "Analysis date",
+      "isAdmin": "Administrator rights",
+      "yes": "Yes",
+      "no": "No",
+      "total": "Total",
+      "passed": "Compliant",
+      "failed": "Non-compliant",
+      "errors": "Errors",
+      "info": "Informational",
+      "severity": "Severity",
+      "category": "Category",
+      "level": "Level",
+      "status": "Status",
+      "details": "Details",
+      "command": "Command",
+      "expected": "Expected",
+      "actual": "Actual",
+      "fix": "Fix",
+      "gpoPath": "GPO Path",
+      "gpoSetting": "GPO Setting"
+    },
+    
+    "status": {
+      "pass": "Compliant",
+      "fail": "Non-compliant",
+      "error": "Error",
+      "info": "Information",
+      "unknown": "Unknown",
+      "running": "Running",
+      "pending": "Pending",
+      "completed": "Completed",
+      "skipped": "Skipped"
+    },
+    
+    "severity": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low",
+      "info": "Info"
+    },
+    
+    "categories": {
+      "firewall": "Firewall",
+      "antivirus": "Antivirus",
+      "updates": "Updates",
+      "services": "Services",
+      "network": "Network",
+      "authentication": "Authentication",
+      "authorization": "Authorization",
+      "audit": "Audit",
+      "encryption": "Encryption",
+      "hardening": "Hardening",
+      "compliance": "Compliance",
+      "other": "Other"
+    },
+    
+    "levels": {
+      "basic": "Basic",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "custom": "Custom"
+    },
+    
+    "messages": {
+      "loading": "Loading results...",
+      "loadingChecks": "Loading checks...",
+      "errorLoading": "Unable to load results",
+      "errorLoadingDetails": "Make sure you have launched the analysis via start.bat (Windows) or start.sh (Linux).",
+      "noResults": "No results for this filter",
+      "noChecks": "No checks available",
+      "confirmApply": "Do you want to apply {count} fix(es)?\n\nThis action will modify the system configuration.",
+      "confirmNewAnalysis": "Do you want to start a new analysis?\n\nThis will close this window.",
+      "scriptGenerated": "Remediation script generated",
+      "scriptCopied": "Script copied to clipboard!",
+      "copyError": "Error copying to clipboard",
+      "selectChecks": "Please select at least one check to apply.",
+      "analysisRequired": "Please perform an analysis first.",
+      "testMode": "Test mode - No changes will be made",
+      "applyingFixes": "Applying fixes...",
+      "fixApplied": "Fix applied successfully",
+      "fixFailed": "Failed to apply fix",
+      "exportSuccess": "Report exported successfully",
+      "exportError": "Error exporting report",
+      "configSaved": "Configuration saved",
+      "configError": "Error saving configuration"
+    },
+    
+    "tooltips": {
+      "refresh": "Reload results",
+      "filter": "Filter results",
+      "expandAll": "Expand all",
+      "collapseAll": "Collapse all",
+      "help": "Help",
+      "settings": "Settings",
+      "info": "More information",
+      "warning": "Warning",
+      "critical": "Critical - Immediate action required",
+      "high": "High priority",
+      "medium": "Medium priority",
+      "low": "Low priority"
+    }
+  },
+  
+  "scripts": {
+    "common": {
+      "title": "Security Hardening Console",
+      "version": "v1.0",
+      "welcome": "Welcome to Security Hardening Console",
+      "adminRequired": "Administrator rights required",
+      "rootRequired": "Root rights required",
+      "analyzing": "Analyzing...",
+      "complete": "Complete",
+      "failed": "Failed",
+      "error": "Error",
+      "warning": "Warning",
+      "info": "Information",
+      "pressKey": "Press any key to continue..."
+    },
+    
+    "bat": {
+      "title": "Security Hardening Console",
+      "subtitle": "Windows Server Analysis and Hardening",
+      "checkingAdmin": "Checking administrator rights...",
+      "adminOk": "[OK] Administrator rights detected",
+      "adminError": "[ERROR] This program must be run as administrator",
+      "adminHint": "Right-click on start.bat and select",
+      "adminHint2": "Run as administrator",
+      "checkingPowershell": "Checking PowerShell...",
+      "powershellOk": "[OK] PowerShell detected",
+      "powershellError": "[ERROR] PowerShell is not installed",
+      "analyzing": "[*] Starting system analysis...",
+      "analyzingWait": "This may take a few moments...",
+      "analysisError": "[ERROR] Analysis failed",
+      "analysisDone": "[OK] Analysis complete!",
+      "openingBrowser": "[*] Opening web interface...",
+      "browserHint": "The interface has opened in your browser.",
+      "browserManual": "If not, please open manually:",
+      "canClose": "You can close this window.",
+      "separator": "===================================================="
+    },
+    
+    "powershell": {
+      "starting": "Starting security analysis...",
+      "loadingChecks": "Loading checks...",
+      "checksLoaded": "{count} checks loaded",
+      "usingDefaults": "Using default checks (no YAML files found)",
+      "analyzing": "Checking: {title}...",
+      "statusPass": "[OK]",
+      "statusFail": "[FAIL]",
+      "statusError": "[ERROR]",
+      "statusInfo": "[INFO]",
+      "analysisComplete": "Analysis complete!",
+      "resultsSaved": "Results saved to: {path}",
+      "summary": "Summary:",
+      "summaryPassed": "  - Compliant: {count}",
+      "summaryFailed": "  - Non-compliant: {count}",
+      "summaryErrors": "  - Errors: {count}",
+      "summaryInfo": "  - Informational: {count}",
+      "errorAdmin": "This script must be run as administrator",
+      "errorAnalysis": "Error during analysis: {error}",
+      "errorLoading": "Error loading {file}: {error}",
+      "errorCommand": "Error executing command: {error}"
+    },
+    
+    "bash": {
+      "title": "SECURITY HARDENING CONSOLE v1.0",
+      "subtitle": "Linux Analysis and Hardening",
+      "checkingRoot": "Checking root privileges...",
+      "rootOk": "[OK] Root privileges detected",
+      "rootError": "[ERROR] This program must be run as root",
+      "rootHint": "Use: sudo ./start.sh",
+      "checkingBash": "Checking bash...",
+      "bashOk": "[OK] Bash detected",
+      "bashError": "[ERROR] Bash is not installed",
+      "analyzing": "[*] Starting system analysis...",
+      "analyzingWait": "This may take a few moments...",
+      "analysisError": "[ERROR] Analysis failed",
+      "analysisDone": "[OK] Analysis complete!",
+      "openingBrowser": "[*] Opening web interface...",
+      "browserError": "[!] Could not automatically open browser",
+      "browserHint": "The interface should have opened in your browser.",
+      "browserManual": "If not, please open manually:",
+      "canClose": "You can close this window.",
+      "starting": "Starting security analysis...",
+      "loadingChecks": "Loading checks...",
+      "checksLoaded": "checks loaded",
+      "analyzing": "Checking...",
+      "analysisComplete": "Analysis complete!",
+      "summary": "Summary:",
+      "resultsSaved": "Results saved to:",
+      "separator": "===================================================="
+    }
+  },
+  
+  "checks": {
+    "defaultTitles": {
+      "firewall": "Firewall status",
+      "antivirus": "Antivirus protection",
+      "updates": "System updates",
+      "ssh": "SSH configuration",
+      "network": "Network configuration",
+      "services": "System services",
+      "authentication": "Authentication",
+      "encryption": "Encryption",
+      "audit": "Audit configuration",
+      "kernel": "Kernel parameters"
+    },
+    
+    "defaultDescriptions": {
+      "firewall": "Checks that firewall is enabled and properly configured",
+      "antivirus": "Checks for presence and activation of antivirus",
+      "updates": "Checks that system is up to date with latest security patches",
+      "ssh": "Checks secure configuration of SSH service",
+      "network": "Checks network settings for insecure configurations",
+      "services": "Checks that only necessary services are running",
+      "authentication": "Checks authentication and password settings",
+      "encryption": "Checks encryption usage for sensitive data",
+      "audit": "Checks that system auditing is properly configured",
+      "kernel": "Checks kernel security parameters"
+    }
+  },
+  
+  "generator": {
+    "title": "Check Generator",
+    "subtitle": "Easily create new security checks",
+    "steps": {
+      "metadata": "Metadata",
+      "commands": "Commands",
+      "remediation": "Remediation",
+      "preview": "Preview"
+    },
+    "fields": {
+      "id": "Unique identifier",
+      "idHint": "Ex: win-firewall, linux-ssh",
+      "title": "Title",
+      "description": "Description",
+      "severity": "Severity",
+      "category": "Category",
+      "level": "Level",
+      "checkCommand": "Check command",
+      "fixCommand": "Fix command",
+      "expectedResult": "Expected result",
+      "distribution": "Distribution",
+      "universal": "Universal",
+      "addLanguage": "Add language",
+      "addDistribution": "Add distribution"
+    },
+    "actions": {
+      "generate": "Generate",
+      "download": "Download",
+      "copy": "Copy",
+      "test": "Test",
+      "import": "Import",
+      "export": "Export",
+      "clear": "Clear",
+      "validate": "Validate"
+    },
+    "messages": {
+      "generated": "Check generated successfully",
+      "copied": "YAML copied to clipboard",
+      "downloaded": "File downloaded",
+      "invalid": "Please fill all required fields",
+      "idExists": "This ID already exists",
+      "testSuccess": "Test successful",
+      "testFailed": "Test failed"
+    }
+  },
+  
+  "help": {
+    "title": "Help",
+    "sections": {
+      "gettingStarted": "Getting Started",
+      "addingChecks": "Adding Checks",
+      "customization": "Customization",
+      "troubleshooting": "Troubleshooting",
+      "faq": "Frequently Asked Questions"
+    },
+    "content": {
+      "gettingStarted": "To get started, simply run start.bat (Windows) or start.sh (Linux) as administrator.",
+      "addingChecks": "Add your own checks by creating YAML files in the verifications/ folder.",
+      "customization": "Customize the interface and checks according to your needs.",
+      "troubleshooting": "If you encounter issues, check the logs and ensure you have administrator rights."
+    }
+  },
+  
+  "report": {
+    "title": "Security Hardening Report",
+    "subtitle": "System: {os} | Level: {level} | Date: {date}",
+    "sections": {
+      "executive": "Executive Summary",
+      "technical": "Technical Details",
+      "recommendations": "Recommendations",
+      "appendix": "Appendix"
+    },
+    "fields": {
+      "score": "Compliance score",
+      "critical": "Critical issues",
+      "improvements": "Suggested improvements",
+      "compliant": "Compliant items"
+    }
+  }
+}

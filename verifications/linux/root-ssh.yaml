@@ -1,0 +1,42 @@
+# verifications/linux/ssh-root-login.yaml
+id: linux-ssh-root-login
+meta:
+  version: "1.0"
+  author: "Security Team"
+  last_updated: "2024-01-15"
+
+title:
+  en: "SSH Root Login"
+  fr: "Connexion SSH root"
+
+description:
+  en: "Checks if direct root login via SSH is disabled for security"
+  fr: "Vérifie que la connexion directe root via SSH est désactivée"
+
+severity: critical
+category: authentication
+level: basic
+
+check:
+  linux:
+    command: "grep '^PermitRootLogin' /etc/ssh/sshd_config || echo 'PermitRootLogin yes'"
+    expected: "PermitRootLogin no"
+
+remediation:
+  linux:
+    local:
+      command: |
+        # Backup current config
+        cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+        # Disable root login
+        sed -i 's/^#*PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+        # Restart SSH service
+        systemctl restart sshd || service ssh restart
+      description:
+        en: "Disables direct root SSH login"
+        fr: "Désactive la connexion SSH root directe"
+
+additional_info:
+  impact:
+    en: "Ensure you have sudo access before disabling root login"
+    fr: "Assurez-vous d'avoir un accès sudo avant de désactiver root"

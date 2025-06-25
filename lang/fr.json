@@ -1,0 +1,359 @@
+{
+  "locale": "fr",
+  "name": "Français",
+  "flag": "🇫🇷",
+  "direction": "ltr",
+  
+  "interface": {
+    "title": "Console de Durcissement Sécurité",
+    "subtitle": "Analysez et renforcez la sécurité de vos serveurs Windows et Linux",
+    "version": "v1.0.0",
+    "footer": "Basé sur les recommandations ANSSI, CIS et Microsoft",
+    
+    "buttons": {
+      "analyze": "Analyser",
+      "apply": "Appliquer",
+      "export": "Exporter PDF",
+      "selectAll": "Tout sélectionner",
+      "deselectAll": "Tout désélectionner",
+      "showDetails": "Voir les détails",
+      "close": "Fermer",
+      "download": "Télécharger",
+      "copy": "Copier",
+      "refresh": "Rafraîchir",
+      "newAnalysis": "Nouvelle analyse",
+      "generateScript": "Générer le script",
+      "showFix": "Voir la correction",
+      "test": "Tester",
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "back": "Retour",
+      "next": "Suivant",
+      "finish": "Terminer"
+    },
+    
+    "sections": {
+      "systemInfo": "Informations Système",
+      "summary": "Résumé",
+      "detailedResults": "Résultats Détaillés",
+      "availableActions": "Actions Disponibles",
+      "filters": "Filtres",
+      "progress": "Progression",
+      "remediation": "Correction",
+      "configuration": "Configuration",
+      "language": "Langue",
+      "about": "À propos"
+    },
+    
+    "labels": {
+      "hostname": "Nom de la machine",
+      "operatingSystem": "Système d'exploitation",
+      "distribution": "Distribution",
+      "kernel": "Noyau",
+      "version": "Version",
+      "lastBoot": "Dernier démarrage",
+      "uptime": "Temps de fonctionnement",
+      "user": "Utilisateur",
+      "analysisDate": "Date d'analyse",
+      "isAdmin": "Droits administrateur",
+      "yes": "Oui",
+      "no": "Non",
+      "total": "Total",
+      "passed": "Conformes",
+      "failed": "Non conformes",
+      "errors": "Erreurs",
+      "info": "Informatifs",
+      "severity": "Sévérité",
+      "category": "Catégorie",
+      "level": "Niveau",
+      "status": "Statut",
+      "details": "Détails",
+      "command": "Commande",
+      "expected": "Attendu",
+      "actual": "Actuel",
+      "fix": "Correction",
+      "gpoPath": "Chemin GPO",
+      "gpoSetting": "Paramètre GPO"
+    },
+    
+    "status": {
+      "pass": "Conforme",
+      "fail": "Non conforme",
+      "error": "Erreur",
+      "info": "Information",
+      "unknown": "Inconnu",
+      "running": "En cours",
+      "pending": "En attente",
+      "completed": "Terminé",
+      "skipped": "Ignoré"
+    },
+    
+    "severity": {
+      "critical": "Critique",
+      "high": "Élevé",
+      "medium": "Moyen",
+      "low": "Faible",
+      "info": "Info"
+    },
+    
+    "categories": {
+      "firewall": "Pare-feu",
+      "antivirus": "Antivirus",
+      "updates": "Mises à jour",
+      "services": "Services",
+      "network": "Réseau",
+      "authentication": "Authentification",
+      "authorization": "Autorisation",
+      "audit": "Audit",
+      "encryption": "Chiffrement",
+      "hardening": "Durcissement",
+      "compliance": "Conformité",
+      "other": "Autre"
+    },
+    
+    "levels": {
+      "basic": "Basique",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé",
+      "custom": "Personnalisé"
+    },
+    
+    "messages": {
+      "loading": "Chargement des résultats...",
+      "loadingChecks": "Chargement des vérifications...",
+      "errorLoading": "Impossible de charger les résultats",
+      "errorLoadingDetails": "Assurez-vous d'avoir lancé l'analyse via le script start.bat (Windows) ou start.sh (Linux).",
+      "noResults": "Aucun résultat pour ce filtre",
+      "noChecks": "Aucune vérification disponible",
+      "confirmApply": "Voulez-vous appliquer {count} correction(s) ?\n\nCette action va modifier la configuration du système.",
+      "confirmNewAnalysis": "Voulez-vous lancer une nouvelle analyse ?\n\nCela va fermer cette fenêtre.",
+      "scriptGenerated": "Script de correction généré",
+      "scriptCopied": "Script copié dans le presse-papiers !",
+      "copyError": "Erreur lors de la copie",
+      "selectChecks": "Veuillez sélectionner au moins une vérification à appliquer.",
+      "analysisRequired": "Veuillez d'abord effectuer une analyse.",
+      "testMode": "Mode test - Aucune modification ne sera effectuée",
+      "applyingFixes": "Application des corrections en cours...",
+      "fixApplied": "Correction appliquée avec succès",
+      "fixFailed": "Échec de l'application de la correction",
+      "exportSuccess": "Rapport exporté avec succès",
+      "exportError": "Erreur lors de l'export du rapport",
+      "configSaved": "Configuration sauvegardée",
+      "configError": "Erreur lors de la sauvegarde de la configuration"
+    },
+    
+    "tooltips": {
+      "refresh": "Recharger les résultats",
+      "filter": "Filtrer les résultats",
+      "expandAll": "Tout développer",
+      "collapseAll": "Tout réduire",
+      "help": "Aide",
+      "settings": "Paramètres",
+      "info": "Plus d'informations",
+      "warning": "Attention",
+      "critical": "Critique - Action immédiate requise",
+      "high": "Priorité élevée",
+      "medium": "Priorité moyenne",
+      "low": "Priorité faible"
+    }
+  },
+  
+  "scripts": {
+    "common": {
+      "title": "Console de Durcissement Sécurité",
+      "version": "v1.0",
+      "welcome": "Bienvenue dans la Console de Durcissement Sécurité",
+      "adminRequired": "Droits administrateur requis",
+      "rootRequired": "Droits root requis",
+      "analyzing": "Analyse en cours...",
+      "complete": "Terminé",
+      "failed": "Échoué",
+      "error": "Erreur",
+      "warning": "Avertissement",
+      "info": "Information",
+      "pressKey": "Appuyez sur une touche pour continuer..."
+    },
+    
+    "bat": {
+      "title": "Console de Durcissement Securite",
+      "subtitle": "Analyse et securisation Windows Server",
+      "checkingAdmin": "Verification des droits administrateur...",
+      "adminOk": "[OK] Droits administrateur detectes",
+      "adminError": "[ERREUR] Ce programme doit etre execute en tant qu'administrateur",
+      "adminHint": "Faites un clic droit sur start.bat et selectionnez",
+      "adminHint2": "Executer en tant qu'administrateur",
+      "checkingPowershell": "Verification de PowerShell...",
+      "powershellOk": "[OK] PowerShell detecte",
+      "powershellError": "[ERREUR] PowerShell n'est pas installe",
+      "analyzing": "[*] Lancement de l'analyse du systeme...",
+      "analyzingWait": "Cela peut prendre quelques instants...",
+      "analysisError": "[ERREUR] L'analyse a echoue",
+      "analysisDone": "[OK] Analyse terminee !",
+      "openingBrowser": "[*] Ouverture de l'interface web...",
+      "browserHint": "L'interface s'est ouverte dans votre navigateur.",
+      "browserManual": "Si ce n'est pas le cas, ouvrez manuellement :",
+      "canClose": "Vous pouvez fermer cette fenetre.",
+      "separator": "===================================================="
+    },
+    
+    "powershell": {
+      "starting": "Demarrage de l'analyse de securite...",
+      "loadingChecks": "Chargement des verifications...",
+      "checksLoaded": "{count} verifications chargees",
+      "usingDefaults": "Utilisation des verifications par defaut (aucun fichier YAML trouve)",
+      "analyzing": "Verification: {title}...",
+      "statusPass": "[OK]",
+      "statusFail": "[ECHEC]",
+      "statusError": "[ERREUR]",
+      "statusInfo": "[INFO]",
+      "analysisComplete": "Analyse terminee !",
+      "resultsSaved": "Resultats sauvegardes dans: {path}",
+      "summary": "Resume:",
+      "summaryPassed": "  - Conformes: {count}",
+      "summaryFailed": "  - Non conformes: {count}",
+      "summaryErrors": "  - Erreurs: {count}",
+      "summaryInfo": "  - Informatifs: {count}",
+      "errorAdmin": "Ce script doit etre execute en tant qu'administrateur",
+      "errorAnalysis": "Erreur lors de l'analyse: {error}",
+      "errorLoading": "Erreur lors du chargement de {file}: {error}",
+      "errorCommand": "Erreur lors de l'execution de la commande: {error}"
+    },
+    
+    "bash": {
+      "title": "CONSOLE DE DURCISSEMENT SECURITE v1.0",
+      "subtitle": "Analyse et securisation Linux",
+      "checkingRoot": "Verification des droits root...",
+      "rootOk": "[OK] Droits root detectes",
+      "rootError": "[ERREUR] Ce programme doit être exécuté en tant que root",
+      "rootHint": "Utilisez: sudo ./start.sh",
+      "checkingBash": "Verification de bash...",
+      "bashOk": "[OK] Bash detecte",
+      "bashError": "[ERREUR] Bash n'est pas installe",
+      "analyzing": "[*] Lancement de l'analyse du système...",
+      "analyzingWait": "Cela peut prendre quelques instants...",
+      "analysisError": "[ERREUR] L'analyse a échoué",
+      "analysisDone": "[OK] Analyse terminée !",
+      "openingBrowser": "[*] Ouverture de l'interface web...",
+      "browserError": "[!] Impossible d'ouvrir automatiquement le navigateur",
+      "browserHint": "L'interface devrait s'être ouverte dans votre navigateur.",
+      "browserManual": "Si ce n'est pas le cas, ouvrez manuellement :",
+      "canClose": "Vous pouvez fermer cette fenêtre.",
+      "starting": "Démarrage de l'analyse de sécurité...",
+      "loadingChecks": "Chargement des vérifications...",
+      "checksLoaded": "vérifications chargées",
+      "analyzing": "Vérification en cours...",
+      "analysisComplete": "Analyse terminée !",
+      "summary": "Résumé:",
+      "resultsSaved": "Résultats sauvegardés dans:",
+      "separator": "===================================================="
+    }
+  },
+  
+  "checks": {
+    "defaultTitles": {
+      "firewall": "État du pare-feu",
+      "antivirus": "Protection antivirus",
+      "updates": "Mises à jour système",
+      "ssh": "Configuration SSH",
+      "network": "Configuration réseau",
+      "services": "Services système",
+      "authentication": "Authentification",
+      "encryption": "Chiffrement",
+      "audit": "Configuration d'audit",
+      "kernel": "Paramètres du noyau"
+    },
+    
+    "defaultDescriptions": {
+      "firewall": "Vérifie que le pare-feu est activé et correctement configuré",
+      "antivirus": "Vérifie la présence et l'activation d'un antivirus",
+      "updates": "Vérifie que le système est à jour avec les derniers correctifs de sécurité",
+      "ssh": "Vérifie la configuration sécurisée du service SSH",
+      "network": "Vérifie les paramètres réseau pour détecter les configurations non sécurisées",
+      "services": "Vérifie que seuls les services nécessaires sont actifs",
+      "authentication": "Vérifie les paramètres d'authentification et de mots de passe",
+      "encryption": "Vérifie l'utilisation du chiffrement pour les données sensibles",
+      "audit": "Vérifie que l'audit système est correctement configuré",
+      "kernel": "Vérifie les paramètres de sécurité du noyau"
+    }
+  },
+  
+  "generator": {
+    "title": "Générateur de Vérifications",
+    "subtitle": "Créez facilement de nouvelles vérifications de sécurité",
+    "steps": {
+      "metadata": "Métadonnées",
+      "commands": "Commandes",
+      "remediation": "Correction",
+      "preview": "Aperçu"
+    },
+    "fields": {
+      "id": "Identifiant unique",
+      "idHint": "Ex: win-firewall, linux-ssh",
+      "title": "Titre",
+      "description": "Description",
+      "severity": "Sévérité",
+      "category": "Catégorie",
+      "level": "Niveau",
+      "checkCommand": "Commande de vérification",
+      "fixCommand": "Commande de correction",
+      "expectedResult": "Résultat attendu",
+      "distribution": "Distribution",
+      "universal": "Universel",
+      "addLanguage": "Ajouter une langue",
+      "addDistribution": "Ajouter une distribution"
+    },
+    "actions": {
+      "generate": "Générer",
+      "download": "Télécharger",
+      "copy": "Copier",
+      "test": "Tester",
+      "import": "Importer",
+      "export": "Exporter",
+      "clear": "Effacer",
+      "validate": "Valider"
+    },
+    "messages": {
+      "generated": "Vérification générée avec succès",
+      "copied": "YAML copié dans le presse-papiers",
+      "downloaded": "Fichier téléchargé",
+      "invalid": "Veuillez remplir tous les champs requis",
+      "idExists": "Cet identifiant existe déjà",
+      "testSuccess": "Test réussi",
+      "testFailed": "Test échoué"
+    }
+  },
+  
+  "help": {
+    "title": "Aide",
+    "sections": {
+      "gettingStarted": "Démarrage",
+      "addingChecks": "Ajouter des vérifications",
+      "customization": "Personnalisation",
+      "troubleshooting": "Dépannage",
+      "faq": "Questions fréquentes"
+    },
+    "content": {
+      "gettingStarted": "Pour commencer, lancez simplement start.bat (Windows) ou start.sh (Linux) en tant qu'administrateur.",
+      "addingChecks": "Ajoutez vos propres vérifications en créant des fichiers YAML dans le dossier verifications/.",
+      "customization": "Personnalisez l'interface et les vérifications selon vos besoins.",
+      "troubleshooting": "En cas de problème, vérifiez les logs et assurez-vous d'avoir les droits administrateur."
+    }
+  },
+  
+  "report": {
+    "title": "Rapport de Durcissement Sécurité",
+    "subtitle": "Système: {os} | Niveau: {level} | Date: {date}",
+    "sections": {
+      "executive": "Résumé Exécutif",
+      "technical": "Détails Techniques",
+      "recommendations": "Recommandations",
+      "appendix": "Annexes"
+    },
+    "fields": {
+      "score": "Score de conformité",
+      "critical": "Problèmes critiques",
+      "improvements": "Améliorations suggérées",
+      "compliant": "Points conformes"
+    }
+  }
+}

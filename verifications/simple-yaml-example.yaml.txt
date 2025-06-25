@@ -1,0 +1,27 @@
+# verifications/windows/firewall.yaml
+id: win-firewall
+title:
+  fr: "État du pare-feu Windows"
+  en: "Windows Firewall Status"
+description:
+  fr: "Vérifie que le pare-feu Windows est activé sur tous les profils (Domain, Private, Public)"
+  en: "Checks that Windows Firewall is enabled on all profiles (Domain, Private, Public)"
+severity: critical
+category: firewall
+level: basic
+check:
+  windows:
+    command: "Get-NetFirewallProfile | Select-Object Name, Enabled"
+  linux:
+    command: ""
+remediation:
+  windows:
+    local:
+      command: "Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True"
+    gpo:
+      path:
+        fr: "Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Pare-feu Windows Defender"
+        en: "Computer Configuration > Policies > Windows Settings > Security Settings > Windows Defender Firewall"
+      setting:
+        fr: "Activer le pare-feu pour tous les profils"
+        en: "Enable firewall for all profiles"

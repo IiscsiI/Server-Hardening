@@ -1,0 +1,39 @@
+# verifications/windows/updates.yaml
+id: win-updates
+meta:
+  version: "1.0"
+  author: "Security Team"
+  last_updated: "2024-01-15"
+
+title:
+  en: "Windows Updates"
+  fr: "Mises à jour Windows"
+
+description:
+  en: "Checks if Windows is up to date with the latest security patches"
+  fr: "Vérifie que Windows est à jour avec les derniers correctifs de sécurité"
+
+severity: high
+category: updates
+level: basic
+
+check:
+  windows:
+    command: "(Get-HotFix | Where-Object {$_.InstalledOn -gt (Get-Date).AddDays(-30)} | Measure-Object).Count"
+    expected: "Greater than 0"
+
+remediation:
+  windows:
+    local:
+      command: |
+        # Check for updates
+        Install-Module PSWindowsUpdate -Force -Scope CurrentUser
+        Get-WindowsUpdate -MicrosoftUpdate
+        # To install: Install-WindowsUpdate -MicrosoftUpdate -AcceptAll
+    gpo:
+      path:
+        en: "Computer Configuration > Administrative Templates > Windows Components > Windows Update"
+        fr: "Configuration ordinateur > Modèles d'administration > Composants Windows > Windows Update"
+      setting:
+        en: "Configure Automatic Updates: Enabled - 4 - Auto download and schedule install"
+        fr: "Configurer les mises à jour automatiques : Activé - 4 - Télécharger et planifier"

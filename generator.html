@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Generator - Security Hardening Console</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/generator.css">
+</head>
+<body>
+    <header style="background: linear-gradient(135deg, var(--secondary) 0%, #1e7e34 100%);">
+        <div class="container">
+            <h1>🛠️ Check Generator</h1>
+            <p id="generator-subtitle">Create new security checks easily</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="generator-layout">
+            <!-- Form Section -->
+            <div class="form-section card">
+                <h2 class="card-title">Check Configuration</h2>
+                
+                <!-- Template selector -->
+                <div class="form-group">
+                    <label for="templateSelect">Use template:</label>
+                    <select id="templateSelect" onchange="generator.loadTemplate(this.value)">
+                        <option value="">-- New check --</option>
+                        <option value="firewall">Firewall</option>
+                        <option value="service">System Service</option>
+                        <option value="config">Configuration File</option>
+                        <option value="network">Network Setting</option>
+                    </select>
+                </div>
+
+                <hr style="margin: 20px 0;">
+
+                <!-- Basic info -->
+                <div class="form-group">
+                    <label for="check-id">Unique ID *</label>
+                    <input type="text" id="check-id" placeholder="e.g., win-firewall, linux-ssh">
+                    <div class="hint">Format: [os]-[component]-[action]</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Title *</label>
+                    <div id="title-inputs" class="multilang-inputs">
+                        <div class="lang-input">
+                            <span class="lang-label">EN:</span>
+                            <input type="text" data-lang="en" placeholder="English title">
+                        </div>
+                        <div class="lang-input">
+                            <span class="lang-label">FR:</span>
+                            <input type="text" data-lang="fr" placeholder="Titre en français">
+                        </div>
+                    </div>
+                    <button class="btn btn-sm" onclick="generator.addLanguageField('title')">+ Add language</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <div id="description-inputs" class="multilang-inputs">
+                        <div class="lang-input">
+                            <span class="lang-label">EN:</span>
+                            <textarea data-lang="en" placeholder="English description"></textarea>
+                        </div>
+                        <div class="lang-input">
+                            <span class="lang-label">FR:</span>
+                            <textarea data-lang="fr" placeholder="Description en français"></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm" onclick="generator.addLanguageField('description')">+ Add language</button>
+                </div>
+
+                <!-- Properties -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="severity">Severity *</label>
+                        <select id="severity">
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category">
+                            <option value="firewall">Firewall</option>
+                            <option value="antivirus">Antivirus</option>
+                            <option value="updates">Updates</option>
+                            <option value="services">Services</option>
+                            <option value="network">Network</option>
+                            <option value="authentication">Authentication</option>
+                            <option value="encryption">Encryption</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="level">Level *</label>
+                        <select id="level">
+                            <option value="basic">Basic</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- OS Selection and Commands -->
+                <div style="margin-top: 30px;">
+                    <h3 style="margin-bottom: 15px;">
+                        Operating System Commands
+                        <span class="os-indicator" id="os-indicator">WINDOWS</span>
+                    </h3>
+                    
+                    <div class="tabs-container">
+                        <div class="tabs">
+                            <button class="tab active" onclick="generator.showTab('windows')">
+                                🪟 Windows
+                            </button>
+                            <button class="tab" onclick="generator.showTab('linux')">
+                                🐧 Linux
+                            </button>
+                        </div>
+
+                        <!-- Windows commands -->
+                        <div class="tab-content active" id="tab-windows">
+                            <div class="form-group">
+                                <label>Check command (PowerShell)</label>
+                                <textarea id="win-check-cmd" placeholder="Get-NetFirewallProfile | Select-Object Name, Enabled&#10;# Multiple lines supported for complex scripts" rows="4"></textarea>
+                                <div class="hint">Supports single commands or multi-line PowerShell scripts</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Fix command</label>
+                                <textarea id="win-fix-cmd" placeholder="Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True&#10;# Can include multiple commands" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>GPO Configuration (optional)</label>
+                                <input type="text" id="win-gpo-path" placeholder="GPO path">
+                                <input type="text" id="win-gpo-setting" placeholder="GPO setting" style="margin-top: 10px;">
+                            </div>
+                        </div>
+
+                        <!-- Linux commands -->
+                        <div class="tab-content" id="tab-linux">
+                            <div class="form-group">
+                                <label>Command type</label>
+                                <select id="linux-cmd-type" onchange="generator.updateLinuxUI()">
+                                    <option value="universal">Universal command</option>
+                                    <option value="distro">Per distribution</option>
+                                </select>
+                            </div>
+                            
+                            <div id="linux-universal">
+                                <div class="form-group">
+                                    <label>Check command</label>
+                                    <textarea id="linux-check-cmd" placeholder="# Check if firewall is active&#10;if command -v ufw >/dev/null; then&#10;    ufw status | grep -q 'Status: active' && echo 'active' || echo 'inactive'&#10;elif command -v firewall-cmd >/dev/null; then&#10;    systemctl is-active firewalld&#10;fi" rows="6"></textarea>
+                                    <div class="hint">Supports single commands or multi-line bash scripts</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Fix command</label>
+                                    <textarea id="linux-fix-cmd" placeholder="# Enable appropriate firewall&#10;if command -v ufw >/dev/null; then&#10;    ufw --force enable&#10;elif command -v firewall-cmd >/dev/null; then&#10;    systemctl enable --now firewalld&#10;fi" rows="6"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div id="linux-distro" style="display: none;">
+                                <div class="distro-grid">
+                                    <div class="distro-item">
+                                        <h4>Debian/Ubuntu</h4>
+                                        <textarea data-distro="debian" data-type="check" placeholder="Check command or script" rows="3"></textarea>
+                                        <textarea data-distro="debian" data-type="fix" placeholder="Fix command or script" rows="3" style="margin-top: 5px;"></textarea>
+                                    </div>
+                                    <div class="distro-item">
+                                        <h4>RHEL/CentOS</h4>
+                                        <textarea data-distro="rhel" data-type="check" placeholder="Check command or script" rows="3"></textarea>
+                                        <textarea data-distro="rhel" data-type="fix" placeholder="Fix command or script" rows="3" style="margin-top: 5px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3>Actions</h3>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="generator.generate()">
+                            🔄 Generate
+                        </button>
+                        <button class="btn btn-secondary" onclick="generator.download()">
+                            💾 Download
+                        </button>
+                        <button class="btn btn-info" onclick="generator.copy()">
+                            📋 Copy
+                        </button>
+                        <button class="btn btn-warning" onclick="generator.clear()">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">YAML Preview</h2>
+                    <pre id="yaml-preview"># Fill the form and click Generate</pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p><a href="index.html">← Back to Console</a></p>
+    </footer>
+
+    <script src="js/generator.js"></script>
+</body>
+</html>

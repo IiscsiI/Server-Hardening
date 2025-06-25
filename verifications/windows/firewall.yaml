@@ -1,0 +1,54 @@
+# verifications/windows/firewall.yaml
+id: win-firewall
+meta:
+  version: "1.0"
+  author: "Security Team"
+  last_updated: "2024-01-15"
+  references:
+    - "ANSSI Windows Security Guide"
+    - "CIS Windows Server 2022 Benchmark"
+
+title:
+  en: "Windows Firewall Status"
+  fr: "État du pare-feu Windows"
+  de: "Windows Firewall Status"
+  es: "Estado del Firewall de Windows"
+
+description:
+  en: |
+    Checks that Windows Firewall is enabled on all profiles (Domain, Private, Public).
+    The firewall is the first line of defense against network attacks.
+  fr: |
+    Vérifie que le pare-feu Windows est activé sur tous les profils (Domaine, Privé, Public).
+    Le pare-feu est la première ligne de défense contre les attaques réseau.
+
+severity: critical
+category: firewall
+level: basic
+
+check:
+  windows:
+    command: "Get-NetFirewallProfile | Select-Object Name, Enabled"
+    expected: "All profiles show Enabled: True"
+
+remediation:
+  windows:
+    local:
+      command: "Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True"
+      requires_restart: false
+    gpo:
+      path:
+        en: "Computer Configuration > Policies > Windows Settings > Security Settings > Windows Defender Firewall"
+        fr: "Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Pare-feu Windows Defender"
+      setting:
+        en: "Enable firewall for all profiles"
+        fr: "Activer le pare-feu pour tous les profils"
+
+additional_info:
+  impact:
+    en: "Enabling the firewall may block some applications. Review firewall rules after activation."
+    fr: "L'activation du pare-feu peut bloquer certaines applications. Vérifiez les règles après activation."
+  
+  exceptions:
+    en: "Some server roles may require specific firewall rules to function properly."
+    fr: "Certains rôles serveur peuvent nécessiter des règles spécifiques pour fonctionner."
